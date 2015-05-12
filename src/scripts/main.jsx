@@ -13,11 +13,12 @@ class App extends React.Component {
   	render() {
 		return (
 			<div>
-				Hello world
-				<Button userName="kix"></Button>
+				<MyButton username="kix"></MyButton>
 			</div>
 		);
 	}	  
 }
+
+console.log(MyButton);
 
 React.render(<App/>, document.getElementById('app'));
