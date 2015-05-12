@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+	gutil = require('gulp-util'),
     babel = require('gulp-babel');
 
 var config = {
