@@ -19,6 +19,4 @@ class App extends React.Component {
 	}	  
 }
 
-console.log(MyButton);
-
 React.render(<App/>, document.getElementById('app'));
