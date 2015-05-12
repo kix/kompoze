@@ -17,11 +17,11 @@ gulp.task('bower', function() {
 gulp.task('scripts', function() {
 	gulp.src(config.src + '/scripts/*.jsx')
 		.pipe(react({harmony: false, es6module: true}))
-		.pipe(babel())
+		.pipe(babel({modules: 'amd'}))
 		.pipe(gulp.dest(config.dist + '/js'));
 
     gulp.src(config.src + '/scripts/*.js')
-        .pipe(babel())
+        .pipe(babel({modules: 'amd'}))
         .pipe(gulp.dest(config.dist + '/js'));
 });
 
