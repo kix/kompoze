@@ -1,11 +1,17 @@
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
+	bowerFiles = require('main-bower-files'),
     babel = require('gulp-babel');
 
 var config = {
     src: './src',
     dist: './dist'
 };
+
+gulp.task('bower', function() {
+	gulp.src(bowerFiles())
+		.pipe(gulp.dest(config.dist + '/js'));
+});
 
 gulp.task('scripts', function() {
     gulp.src(config.src + '/scripts/*.js')
