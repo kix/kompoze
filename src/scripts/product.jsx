@@ -6,7 +6,8 @@ export default class Product extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick() {
-        console.log('Clicked', this.props.model);
+        this.props.model.fetch({async: false});
+        alert(this.props.model.get('description'));
     }   
     render() {
         return (
