@@ -1,5 +1,4 @@
 import React from 'react';
-import Backbone from 'backbone';
 
 export default class Product extends React.Component {
     render() {
