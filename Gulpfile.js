@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     bowerFiles = require('main-bower-files'),
     react = require('gulp-react'),
+    browserSync = require('browser-sync'),
     babel = require('gulp-babel');
 
 var config = {

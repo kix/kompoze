@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "gulp server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^2.7.1",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
     "gulp-react": "^3.0.1",
