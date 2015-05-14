@@ -1,6 +1,6 @@
 import React from 'react';
 import MyButton from './button';
-import Product from './product';
+import ProductList from './productList';
 
 requirejs.config({
     baseUrl: '/js',
@@ -15,7 +15,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Product id="1"></Product>
+                <ProductList url="/api/products.json"></ProductList>
                 <MyButton username="kix"></MyButton>
             </div>
         );
