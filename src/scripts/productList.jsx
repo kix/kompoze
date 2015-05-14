@@ -21,17 +21,17 @@ class ProductCollection extends Backbone.Collection {
 
 export default class ProductList extends React.Component {
     render() {
-        this.props.collection = new Backbone.Collection();
+        this.props.collection = new ProductCollection();
         this.props.collection.url = this.props.url;
         this.props.collection.fetch({async: false});
-        var items = [];
-        this.props.collection.models.forEach(function(model) {
-            items.push(<Product model={model} />);
-        });
 
         return (
             <div className="product_list">
-                {items}
+                {this.props.collection.models.map(function(model){
+                    return (
+                        <Product model={model} />
+                    );
+                })}
             </div>
         );
     }
