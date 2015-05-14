@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
-	gutil = require('gulp-util'),
-	bowerFiles = require('main-bower-files'),
-	react = require('gulp-react'),
+    gutil = require('gulp-util'),
+    bowerFiles = require('main-bower-files'),
+    react = require('gulp-react'),
     babel = require('gulp-babel');
 
 var config = {
@@ -10,15 +10,15 @@ var config = {
 };
 
 gulp.task('bower', function() {
-	gulp.src(bowerFiles())
-		.pipe(gulp.dest(config.dist + '/js'));
+    gulp.src(bowerFiles())
+        .pipe(gulp.dest(config.dist + '/js'));
 });
 
 gulp.task('scripts', function() {
-	gulp.src(config.src + '/scripts/*.jsx')
-		.pipe(react({harmony: false, es6module: true}))
-		.pipe(babel({modules: 'amd'}))
-		.pipe(gulp.dest(config.dist + '/js'));
+    gulp.src(config.src + '/scripts/*.jsx')
+        .pipe(react({harmony: false, es6module: true}))
+        .pipe(babel({modules: 'amd'}))
+        .pipe(gulp.dest(config.dist + '/js'));
 
     gulp.src(config.src + '/scripts/*.js')
         .pipe(babel({modules: 'amd'}))
