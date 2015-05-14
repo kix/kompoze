@@ -26,6 +26,18 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest(config.dist + '/js'));
 });
 
+gulp.task('server', function() {
+    browserSync.init({
+        server: {
+            baseDir: config.dist
+        }
+    });
+
+    gulp.watch(config.src + '/scripts/*.jsx', ['scripts']);
+    gulp.watch(config.dist + '/api/**/*.json').on('change', browserSync.reload);
+    gulp.watch(config.dist + '/js/*.js').on('change', browserSync.reload);
+});
+
 gulp.task('default', function() {
    gulp.watch(config.src + '/scripts/**/*.js', ['scripts']); 
 });
