@@ -8,12 +8,15 @@ export default class Product extends React.Component {
     handleClick() {
         this.props.model.fetch({async: false});
         alert(this.props.model.get('description'));
-    }   
+    }
     render() {
         return (
-            <button className="product" data-id={this.props.model.get('id')} onClick={this.handleClick}>
-                {this.props.model.get('title')}
-            </button>
+            <div class="product">
+                <img src={this.props.model.get('thumb')}/>
+                <button className="product-add" data-id={this.props.model.get('id')} onClick={this.handleClick}>
+                    {this.props.model.get('title')}
+                </button>
+            </div>
         );
     }
 }
