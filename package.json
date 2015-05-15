@@ -1,13 +1,17 @@
 {
   "name": "react-renderer",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React/Backbone REST wrapper app",
   "main": "index.js",
   "scripts": {
-    "server": "gulp server",
+    "start": "gulp server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Stepan Anchugov",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kix/kompoze.git"
+  },
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.7.1",
