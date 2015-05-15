@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    del = require('del'),
     gutil = require('gulp-util'),
     bowerFiles = require('main-bower-files'),
     react = require('gulp-react'),
@@ -9,6 +10,10 @@ var config = {
     src: './src',
     dist: './dist'
 };
+
+gulp.task('clean', function() {
+    del(config.dist + '/**/*');
+});
 
 gulp.task('bower', function() {
     gulp.src(bowerFiles())
