@@ -40,10 +40,20 @@ gulp.task('scripts', function(cb) {
     cb();
 });
 
+gulp.task('css', function(cb) {
+    var postcss = require('gulp-postcss');
+    gulp.src(config.src + '/css/**/*.css')
+        .pipe(postcss([require('postcss-mixins'), require('postcss-simple-vars')]))
+        .pipe(gulp.dest(config.dist + '/css'))
+        .pipe(browserSync.reload({stream: true}));
+    cb();
+});
+
 gulp.task('watch', function() {
     gulp.watch(config.src + '/scripts/*.jsx', ['scripts']);
     gulp.watch(config.dist + '/api/**/*.json').on('change', browserSync.reload);
     gulp.watch(config.dist + '/js/*.js').on('change', browserSync.reload);
+    gulp.watch(config.src + '/css/**/*.css', ['css']);
 });
 
 gulp.task('browserSync', function() {

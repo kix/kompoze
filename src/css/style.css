@@ -1,0 +1,6 @@
+$background-color: #cccccd;
+
+body {
+    background: $background-color;
+    font-size: 12px;
+}
