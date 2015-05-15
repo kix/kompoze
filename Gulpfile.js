@@ -1,10 +1,6 @@
 var gulp = require('gulp'),
-    del = require('del'),
     gutil = require('gulp-util'),
-    bowerFiles = require('main-bower-files'),
-    react = require('gulp-react'),
-    browserSync = require('browser-sync'),
-    babel = require('gulp-babel');
+    browserSync = require('browser-sync');
 
 var config = {
     src: './src',
@@ -12,10 +8,12 @@ var config = {
 };
 
 gulp.task('clean', function() {
+    var del = require('del');
     del(config.dist + '/**/*');
 });
 
 gulp.task('bower', function() {
+    var bowerFiles = require('main-bower-files');
     gulp.src(bowerFiles())
         .pipe(gulp.dest(config.dist + '/js'));
 });
@@ -28,6 +26,9 @@ gulp.task('html', function(cb) {
 });
 
 gulp.task('scripts', function(cb) {
+    var react = require('gulp-react'),
+    babel = require('gulp-babel');
+
     gulp.src(config.src + '/scripts/*.jsx')
         .pipe(react({harmony: false, es6module: true}))
         .pipe(babel({modules: 'amd'}))
@@ -51,8 +52,7 @@ gulp.task('css', function(cb) {
 
 gulp.task('watch', function() {
     gulp.watch(config.src + '/scripts/*.jsx', ['scripts']);
-    gulp.watch(config.dist + '/api/**/*.json').on('change', browserSync.reload);
-    gulp.watch(config.dist + '/js/*.js').on('change', browserSync.reload);
+    gulp.watch(config.src + '/js/**/*.js', ['scripts']);
     gulp.watch(config.src + '/css/**/*.css', ['css']);
 });
 
