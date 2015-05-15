@@ -33,22 +33,30 @@ gulp.task('scripts', function(cb) {
         .pipe(babel({modules: 'amd'}))
         .pipe(gulp.dest(config.dist + '/js'));
 
-    gulp.src(config.src + '/scripts/*.js')
+    gulp.src(config.src + '/scripts/**/*.js')
         .pipe(babel({modules: 'amd'}))
         .pipe(gulp.dest(config.dist + '/js'));
+
+    cb();
 });
 
-gulp.task('server', function() {
+gulp.task('watch', function() {
+    gulp.watch(config.src + '/scripts/*.jsx', ['scripts']);
+    gulp.watch(config.dist + '/api/**/*.json').on('change', browserSync.reload);
+    gulp.watch(config.dist + '/js/*.js').on('change', browserSync.reload);
+});
+
+gulp.task('browserSync', function() {
     browserSync.init({
         server: {
             baseDir: config.dist
         }
     });
-
-    gulp.watch(config.src + '/scripts/*.jsx', ['scripts']);
-    gulp.watch(config.dist + '/api/**/*.json').on('change', browserSync.reload);
-    gulp.watch(config.dist + '/js/*.js').on('change', browserSync.reload);
 });
+
+gulp.task('build', ['html', 'bower', 'scripts']);
+
+gulp.task('server', ['build', 'watch', 'browserSync']);
 
 gulp.task('default', function() {
    gulp.watch(config.src + '/scripts/**/*.js', ['scripts']); 
