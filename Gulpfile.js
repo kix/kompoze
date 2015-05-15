@@ -20,7 +20,14 @@ gulp.task('bower', function() {
         .pipe(gulp.dest(config.dist + '/js'));
 });
 
-gulp.task('scripts', function() {
+gulp.task('html', function(cb) {
+    gulp.src(config.src + '/**/*.html')
+        .pipe(gulp.dest(config.dist));
+
+    cb();
+});
+
+gulp.task('scripts', function(cb) {
     gulp.src(config.src + '/scripts/*.jsx')
         .pipe(react({harmony: false, es6module: true}))
         .pipe(babel({modules: 'amd'}))
